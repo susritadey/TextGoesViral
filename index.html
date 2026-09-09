@@ -3,45 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TextGoesViral - Make LinkedIn Posts Bold</title>
+<title>TextGoesViral</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
 <style>
-body { font-family: Arial, sans-serif; background: #f3f2ef; padding: 20px; text-align: center; }
-.container { max-width: 600px; margin: auto; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-h1 { color: #0a66c2; }
-textarea { width: 100%; height: 100px; padding: 15px; font-size: 16px; border-radius: 8px; border: 1px solid #ccc; box-sizing: border-box; }
-button { background: #0a66c2; color: white; border: none; padding: 12px 25px; font-size: 16px; border-radius: 25px; margin: 15px 0; cursor: pointer; font-weight: bold; }
-#output { width: 100%; min-height: 100px; background: #333; color: white; padding: 15px; font-size: 18px; border-radius: 8px; box-sizing: border-box; text-align: left; white-space: pre-wrap; font-family: 'Segoe UI Symbol', 'Noto Sans Symbols2', 'Android Emoji', sans-serif; word-break: break-all; }
-.copy-btn { background: #057642; }
+body{font-family:'Noto Sans',sans-serif;background:#000;color:white;margin:0;padding:20px;text-align:center}
+.container{max-width:500px;margin:auto}
+h1{font-size:28px}
+textarea{width:100%;height:120px;padding:15px;font-size:18px;border-radius:12px;border:none;box-sizing:border-box}
+button{width:100%;background:white;color:black;border:none;padding:14px;font-size:18px;border-radius:12px;margin:20px 0;font-weight:bold;cursor:pointer}
+#output{width:100%;min-height:100px;background:#1a1a1a;color:white;padding:15px;font-size:20px;border-radius:12px;box-sizing:border-box;text-align:left;white-space:pre-wrap;word-break:break-all;font-family:'Noto Sans Symbols 2','Segoe UI Symbol',sans-serif;border:1px solid #333}
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols+2&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="container">
 <h1>TextGoesViral 🚀</h1>
-<p>Tool to make LinkedIn posts bold and viral</p>
-<textarea id="input" placeholder="Yaha apna text likho... Ex: My name is Susrita"></textarea>
+<textarea id="input" placeholder="My name"></textarea>
 <button onclick="makeBold()">Bold Banao ✨</button>
-<div id="output">Yaha tumhara bold text ayega...</div>
-<button class="copy-btn" onclick="copyText()">Copy Kar Lo 📋</button>
+<div id="output">XX XXXX</div>
+<p style="color:#888;margin-top:15px">Made by susritadey</p>
 </div>
-
 <script>
-function makeBold() {
-  const text = document.getElementById('input').value;
-  if(!text) { alert('Pehle kuch likho!'); return; }
-  let bold = '';
-  for (let char of text) {
-    let code = char.charCodeAt(0);
-    if (code >= 65 && code <= 90) { bold += String.fromCodePoint(0x1D400 + code - 65); }
-    else if (code >= 97 && code <= 122) { bold += String.fromCodePoint(0x1D41A + code - 97); }
-    else { bold += char; }
-  }
-  document.getElementById('output').innerText = bold;
-}
-function copyText() {
-  const out = document.getElementById('output').innerText;
-  if(out.includes('Yaha tumhara')) { alert('Pehle Bold Banao par click karo!'); return; }
-  navigator.clipboard.writeText(out);
-  alert('Copied! Ab LinkedIn par paste kar do!');
+function makeBold(){
+ const text=document.getElementById('input').value;
+ if(!text){alert('Pehle kuch likho!');return;}
+ let bold='';
+ for(let char of text){
+  let code=char.charCodeAt(0);
+  if(code>=65&&code<=90){bold+=String.fromCodePoint(0x1D400+code-65);}
+  else if(code>=97&&code<=122){bold+=String.fromCodePoint(0x1D41A+code-97);}
+  else{bold+=char;}
+ }
+ document.getElementById('output').innerText=bold;
 }
 </script>
 </body>
