@@ -1,28 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TextGoesViral</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TextGoesViral - Make LinkedIn Posts Bold</title>
 <style>
-body{font-family:sans-serif; padding:20px; background:#0a0a0a; color:white}
-h2{ text-align:center }
-textarea{width:100%; height:120px; padding:15px; border-radius:12px; border:none; font-size:16px; box-sizing:border-box}
-button{width:100%; padding:14px; background:white; color:black; border:none; border-radius:12px; font-weight:bold; margin-top:12px; font-size:16px}
-.out{background:#1a1a1a; padding:15px; margin-top:20px; border-radius:12px; min-height:60px; border:1px solid #333; word-break:break-all}
-small{color:#888; display:block; text-align:center; margin-top:15px}
+body { font-family: Arial, sans-serif; background: #f3f2ef; padding: 20px; text-align: center; }
+.container { max-width: 600px; margin: auto; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+h1 { color: #0a66c2; }
+textarea { width: 100%; height: 100px; padding: 15px; font-size: 16px; border-radius: 8px; border: 1px solid #ccc; box-sizing: border-box; }
+button { background: #0a66c2; color: white; border: none; padding: 12px 25px; font-size: 16px; border-radius: 25px; margin: 15px 0; cursor: pointer; font-weight: bold; }
+#output { width: 100%; min-height: 100px; background: #333; color: white; padding: 15px; font-size: 18px; border-radius: 8px; box-sizing: border-box; text-align: left; white-space: pre-wrap; font-family: 'Segoe UI Symbol', 'Noto Sans Symbols2', 'Android Emoji', sans-serif; word-break: break-all; }
+.copy-btn { background: #057642; }
 </style>
 </head>
 <body>
-<h2>TextGoesViral 🚀</h2>
-<textarea id="in" placeholder="Yaha apna LinkedIn post likho..."></textarea>
-<button onclick="convert()">Bold Banao ✨</button>
-<div class="out" id="out">Yaha tumhara stylish text ayega...</div>
-<small>Made by susritadey</small>
+<div class="container">
+<h1>TextGoesViral 🚀</h1>
+<p>Tool to make LinkedIn posts bold and viral</p>
+<textarea id="input" placeholder="Yaha apna text likho... Ex: My name is Susrita"></textarea>
+<button onclick="makeBold()">Bold Banao ✨</button>
+<div id="output">Yaha tumhara bold text ayega...</div>
+<button class="copy-btn" onclick="copyText()">Copy Kar Lo 📋</button>
+</div>
+
 <script>
-function convert(){
-  let t = document.getElementById('in').value;
-  let bold = t.replace(/[a-zA-Z]/g, c => String.fromCodePoint(c.charCodeAt(0) + (c>='a'? 119743 : 119717)));
-  document.getElementById('out').innerText = bold;
+function makeBold() {
+  const text = document.getElementById('input').value;
+  if(!text) { alert('Pehle kuch likho!'); return; }
+  let bold = '';
+  for (let char of text) {
+    let code = char.charCodeAt(0);
+    if (code >= 65 && code <= 90) { bold += String.fromCodePoint(0x1D400 + code - 65); }
+    else if (code >= 97 && code <= 122) { bold += String.fromCodePoint(0x1D41A + code - 97); }
+    else { bold += char; }
+  }
+  document.getElementById('output').innerText = bold;
+}
+function copyText() {
+  const out = document.getElementById('output').innerText;
+  if(out.includes('Yaha tumhara')) { alert('Pehle Bold Banao par click karo!'); return; }
+  navigator.clipboard.writeText(out);
+  alert('Copied! Ab LinkedIn par paste kar do!');
 }
 </script>
 </body>
